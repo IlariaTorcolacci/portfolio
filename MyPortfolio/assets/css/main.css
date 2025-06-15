@@ -1,0 +1,2448 @@
+/**
+* Template Name: MyPortfolio
+* Template URL: https://bootstrapmade.com/myportfolio-bootstrap-portfolio-website-template/
+* Updated: Aug 08 2024 with Bootstrap v5.3.3
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+# Help: https://bootstrapmade.com/color-system/
+--------------------------------------------------------------*/
+/* Fonts */
+:root {
+  --default-font: "ui-sans-serif", Instrument Sans:Regular, sans-serif,  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "ui-sans-serif", sans-serif;
+  --nav-font: "ui-sans-serif", sans-serif;
+  --button-font: "ui-sans-serif", sans-serif;
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root { 
+  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
+  --default-color: #212529; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #000000; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #000000; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+  --nav-color: #5b5b5b;  /* The default color of the main navmenu links */
+  --nav-hover-color: #000000; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #f5f5f5; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #5b5b5b; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #000000; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+
+.light-background {
+  --background-color: #f9f9f9;
+  --surface-color: #ffffff;
+}
+
+.dark-background {
+  --background-color: #060606;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #252525;
+  --contrast-color: #ffffff;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+  margin: 0; /* Rimuove tutti i margini predefiniti, inclusi quelli inferiori */
+  padding: 0; /* Assicurati che non ci sia padding sul body */
+
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+/* Testo homepage
+------------------------------*/
+.bio-text {
+  color: #717070; /* Questo è il grigio chiaro per tutto il testo normale nel <h6> */
+  line-height: 1.5; 
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+/* Stile per i link all'interno del bio-text (es. @Polimi, Jiangnan University) */
+.bio-text a {
+  color: #000000; /* Nero puro per i link */
+  text-decoration: none; /* Rimuove la sottolineatura */
+  font-weight: 300; /* Rende i link leggermente più grassetti per farli risaltare */
+}
+
+/* Stile dei link al passaggio del mouse (hover) */
+.bio-text a:hover {
+  text-decoration: none; /* no sottolineatura all'hover */
+  opacity: 0.7;
+}
+
+/* PHP Email Form Messages
+------------------------------*/
+.php-email-form .error-message {
+  display: none;
+  background: #df1529;
+  color: #ffffff;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .sent-message {
+  display: none;
+  color: #ffffff;
+  background: #059652;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .loading {
+  display: none;
+  background: var(--surface-color);
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+}
+
+.php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid var(--accent-color);
+  border-top-color: var(--surface-color);
+  animation: php-email-form-loading 1s linear infinite;
+}
+
+@keyframes php-email-form-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 15px 0;
+  transition: all 0.5s;
+   border-bottom: 1px solid rgb(51, 51, 51);
+    width: 98%;
+    margin: 20px auto;  
+  z-index: 997;
+}
+
+.header .logo {
+  line-height: 1;
+}
+
+.header .logo img {
+  max-height: 32px;
+  margin-right: 8px;
+}
+
+.header .logo h1 {
+  font-size: 30px;
+  margin: 0;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Navmenu */
+.mobile-nav-toggle {
+  color: var(--nav-color);
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 32px;
+  line-height: 0;
+  cursor: pointer;
+  display: block !important;
+  z-index: 998;
+  transition: 0.3s;
+}
+
+.mobile-nav-toggle:hover {
+  color: var(--nav-hover-color);
+}
+
+.navmenu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -300px;
+  z-index: 997;
+  transition: 0.3s;
+  width: 300px;
+  overflow: hidden;
+}
+
+.navmenu ul {
+  display: block;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  overflow-y: auto;
+  transition: 0.3s;
+  z-index: 998;
+}
+
+.navmenu a,
+.navmenu a:focus {
+  color: var(--nav-dropdown-color);
+  padding: 10px 20px;
+  font-family: var(--nav-font);
+  font-size: 17px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.navmenu a i,
+.navmenu a:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+}
+
+.navmenu a i:hover,
+.navmenu a:focus i:hover {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.navmenu a:hover,
+.navmenu .active,
+.navmenu .active:focus {
+  color: var(--nav-dropdown-hover-color);
+}
+
+.navmenu .active i,
+.navmenu .active:focus i {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  transform: rotate(180deg);
+}
+
+.navmenu .dropdown ul {
+  position: static;
+  display: none;
+  z-index: 99;
+  padding: 10px 0;
+  margin: 10px 20px;
+  box-shadow: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.navmenu .dropdown>.dropdown-active {
+  display: block;
+  background-color: var(--nav-dropdown-background-color);
+  border: 1px solid color-mix(in srgb, var(--nav-dropdown-color), transparent 90%);
+}
+
+.mobile-nav-active {
+  overflow: hidden;
+}
+
+.mobile-nav-active .mobile-nav-toggle {
+  right: 310px;
+  background-color: var(--surface-color);
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.mobile-nav-active .navmenu {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--nav-mobile-background-color);
+  transition: 0.3s;
+}
+
+/*--------------------------------------------------------------
+# Global Footer
+--------------------------------------------------------------*/
+.main {
+  flex-grow: 1; /* Questa è la proprietà magica! Permette al main di espandersi */
+}
+
+.footer {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-size: 14px;
+  padding: 40px 0;
+  position: relative;
+  margin-top: 80px;
+  margin-bottom: 0px;
+}
+
+.footer .copyright p {
+  margin-bottom: 0;
+}
+
+.footer .social-links {
+  margin-top: 20px;
+}
+
+.footer .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 16px;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  margin: 0 5px;
+  margin-bottom: 15px; 
+  transition: 0.3s;
+}
+
+/* Per nascondere specificamente i link social che non hanno un'icona interna */
+.footer .social-links a:not(:has(i)) { /* Attenzione: :has() è moderno, verifica compatibilità */
+  display: none !important; /* Nasconde l'elemento */
+}
+
+.footer .social-links a:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.footer .credits {
+  margin-top: 10px;
+  font-size: 13px;
+  text-align: center;
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background-color: var(--background-color);
+  transition: all 0.6s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid var(--accent-color);
+  border-top-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Scroll Top Button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: -15px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  transition: all 0.4s;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+  bottom: 15px;
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/* botton from the first page */ 
+button {
+  cursor: pointer;
+  font-weight: 400;
+  transition: all 0.2s;
+  padding: 3px 12px;
+  border-radius: 15px;
+  background: #edecec;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-family: var(--button-font);
+ }
+
+button:hover {
+  background: #9bb6f5;
+  color:white;
+}
+
+button > svg {
+  width: 20px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+
+ 
+}
+
+button:hover svg {
+  transform: translateX(5px);
+  fill:white; 
+ }
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* botton from the first page, no arrow */
+buttonnoarrow {
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+  padding: 10px 12px; /* Padding specificato */
+  border-radius: 15px; /* Bordi arrotondati */
+  background: #edecec;
+  border: 1px solid transparent;
+  display: flex; /* Mantiene il display flex per allineamento futuro se aggiungi altro */
+  align-items: center;
+  font-size: 10px; /* Dimensione del font specificata */
+  font-family: var(--button-font); 
+}
+
+buttonnoarrow:hover {
+  background: #9bb6f5; /* Colore al passaggio del mouse specificato */
+  color: white;
+}
+
+/* Rimosse le sezioni CSS che controllavano lo stile dell'SVG */
+/* button > svg {
+  width: 20px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover svg {
+  transform: translateX(5px);
+} */
+
+buttonnoarrow:active {
+  transform: scale(0.95);
+}
+
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs
+--------------------------------------------------------------*/
+.page-title {
+  color: var(--default-color);
+ /* background-color: var(--background-color);*/
+  padding: 120px 0;
+  border-bottom: 1px solid rgb(51, 51, 51); 
+  width: 98%; 
+  margin: 20px auto; 
+  text-align: center;
+  position: relative;
+}
+
+.page-title h1 {
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.page-title h6 { /* Se hai una classe .bio-text, usa quella: .bio-text */
+  max-width: 800px; /* Imposta una larghezza massima per il testo dell'h6 */
+  margin-left: auto;   /* Centra l'h6 orizzontalmente */
+  margin-right: auto;  /* Centra l'h6 orizzontalmente */
+  /* Assicurati che il text-align: center; sia applicato al genitore (.page-title) o anche qui se necessario */
+  color: #888888; /* Grigio chiaro per il testo normale nel <h6> */
+  line-height: 1.5;
+  margin-top: 15px; /* Spazio sopra il testo della bio */
+  margin-bottom: 25px; /* Spazio sotto il testo della bio */
+}
+
+.page-title .breadcrumbs ol {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  justify-content: center;
+  gap:15px;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  align-items:center;
+}
+
+/* Questa regola ora aggiungerà il margine a destra di OGNI li */
+.page-title .breadcrumbs ol li {
+  margin-right: 0; /* QUESTA È LA REGOLA PER LA DISTANZA DI 30PX */
+  padding-left: 0; /* Rimuovi il padding-left esistente se presente */
+}
+
+.page-title .breadcrumbs ol li:last-child {
+  margin-right: 0;
+}
+
+/* Nel tuo file assets/css/main.css */
+
+.page-intro.section {
+  padding-top: 60px;   /* Puoi regolare questo valore, es. 80px per un buon spazio */
+  padding-bottom: 20px; /* Deve essere lo stesso valore del padding-top per simmetria, o diverso se preferisci */
+}
+
+/* Inoltre, assicurati che il titolo H1 sia in grassetto come richiesto prima */
+.page-intro h1 {
+   font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 10px; 
+}
+
+/* E, se necessario, regola anche i margini tra H1 e H6, o il padding del container interno */
+.page-intro .container {
+  /* Questo è il div con class="container text-center" */
+  /* Potresti voler aggiungere un padding-top o padding-bottom qui se la sezione ha già padding */
+  /* Esempio: padding-top: 20px; padding-bottom: 20px; */
+}
+
+/* Regola il margine inferiore del sottotitolo se c'è un elemento subito dopo (es. un'immagine) */
+.page-intro h6 {
+    margin-bottom: 30px; /* Regola questo valore se vuoi più spazio sotto il sottotitolo */
+}
+/* Rimuovi o commenta questa regola, altrimenti avrai ancora il separatore "/" */
+/*
+.page-title .breadcrumbs ol li+li {
+  padding-left: 10px;
+}
+
+*/
+/* Rimuovi o commenta questa regola, altrimenti avrai ancora il separatore "/" */
+/* 
+.page-title .breadcrumbs ol li+li::before {
+  content: "/";
+  display: inline-block;
+  padding-right: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}*/
+.breadcrumb-button {
+    background: transparent; /* Rimuove lo sfondo del bottone */
+    border: none;            /* Rimuove il bordo del bottone */
+    cursor: pointer;         /* Cambia il cursore a "mano" al passaggio */
+    display: flex;           /* Per allineare il testo e l'SVG all'interno del bottone */
+    align-items: center;     /* Centra testo e SVG verticalmente */
+    gap: 5px;                /* Spazio tra il testo e l'SVG dentro il bottone */
+    padding: 0;              /* Rimuove il padding interno del bottone */
+}
+
+/* --- REGOLA GENERALE PER L'IMMAGINE (anche desktop) --- */
+.page-title .container img {
+  display: block;            /* Assicura che l'immagine sia un elemento a blocco */
+  max-width: 100%;           /* L'immagine non supererà mai la larghezza del suo contenitore sul desktop */
+  width: 100%;               /* La larghezza dell'immagine si adatta al contenitore */
+  height: auto;              /* Mantiene le proporzioni dell'immagine */
+  object-fit: cover;         /* Riempie il contenitore tagliando se necessario */
+  object-position: center center; /* Centra l'immagine all'interno del suo contenitore */
+  border-radius: inherit;    /* Eredita il border-radius dal genitore */
+  margin-top: 30px;          /* Spazio tra il testo e l'immagine */
+  margin-left: auto;         /* Centra l'immagine orizzontalmente sul desktop */
+  margin-right: auto;        /* Centra l'immagine orizzontalmente sul desktop */
+  /* Rimosso padding-bottom e padding-top che erano a 0px */
+}
+
+/* --- REGOLA PER IL WRAPPER DELL'IMMAGINE --- */
+/* Questa regola è fondamentale per sovrascrivere eventuali stili Framer */
+[data-framer-background-image-wrapper="true"] {
+    position: relative !important; /* Forza la posizione relativa per rispettare il flusso del documento */
+    inset: auto !important;       /* Rimuovi le impostazioni di inset che potrebbero causare problemi */
+    width: 100%;                  /* Il wrapper occupa tutta la larghezza disponibile del suo contenitore */
+    height: auto;                 /* L'altezza del wrapper si adatta all'immagine */
+    display: block;               /* Assicurati che il wrapper sia un elemento a blocco */
+    overflow: hidden;             /* Mantiene il bordo-raggio e impedisce contenuto extra, ma permetteremo all'immagine di "sforare" su mobile con una media query */
+}
+
+
+---
+
+### Stili Specifici per la Modalità Mobile (`max-width: 768px`)
+
+```css
+@media (max-width: 768px) {
+  /* Modifiche al .container per eliminare il padding laterale su mobile */
+  .container.img {
+    padding-left: 0 !important;   /* Rimuove il padding a sinistra */
+    padding-right: 0 !important;  /* Rimuove il padding a destra */
+    /* Assicurati che non ci sia un max-width troppo restrittivo su mobile se vuoi che l'immagine "sfori" */
+    max-width: none; /* Rimuove qualsiasi max-width che potrebbe limitare l'espansione */
+  }
+
+  /* Rendi l'immagine più grande su mobile e falla "sforare" i bordi */
+  .page-title .container img {
+    width: 105% !important; /* Forza la larghezza dell'immagine ad essere più grande del container. Puoi regolare 105%. */
+    margin-left: -2.5% !important; /* Centra l'immagine quando la larghezza è maggiore di 100% */
+    margin-right: -2.5% !important; /* L'altro 2.5% per il centraggio */
+    border: 2mm solid #000000 !important; /* Assicura che il bordo rimanga anche qui, con !important */
+    /* Se i bordi si "mangiano" troppo, puoi pensare di ridurli qui: */
+    /* border-width: 1mm !important; */
+  }
+
+  /* Permetti al wrapper di "sforare" l'immagine se il genitore (container) non ha overflow hidden */
+  [data-framer-background-image-wrapper="true"] {
+      overflow: visible !important; /* *** FONDAMENTALE ***: Permetti all'immagine di estendersi oltre il wrapper su mobile */
+  }
+
+  /* Regole di stile base per .page-title su mobile, se vuoi ridurlo */
+  .page-title {
+    padding: 60px 0; /* Riduci il padding verticale per ottimizzare lo spazio su mobile */
+    width: 100%;     /* Assicurati che il page-title occupi tutta la larghezza disponibile */
+    margin: 0 auto;  /* Rimuovi il margin di 20px auto che avevi in globale per mobile */
+  }
+}
+
+/* Stile per il cursore che simula la digitazione */
+.typed-cursor {
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+  margin-left: 2px; /* Spazio dal testo */
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Potresti voler nascondere il testo prima che JavaScript lo scriva */
+#typed-text {
+  visibility: hidden; /* JavaScript lo renderà visibile */
+}
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 0px 0;
+  scroll-margin-top: 90px;
+  overflow: clip;
+}
+
+@media (max-width: 1199px) {
+
+  section,
+  .section {
+    scroll-margin-top: 66px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Portfolio Section
+--------------------------------------------------------------*/
+.portfolio .portfolio-info h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.portfolio .portfolio-info h6 {
+  /* Assicurati che non ci siano text-align: left o right qui che sovrascrivano */
+  /* color: rgba(255, 255, 255, 0.8); */ /* Colore se vuoi un grigio leggermente trasparente */
+  margin-top: 5px; /* Per dare un po' di spazio dal titolo h2 */
+  margin-bottom: 5px;
+ } 
+
+.portfolio .portfolio-info p {
+  font-size: 15px;
+}
+
+.portfolio .portfolio-filters {
+  padding: 0;
+  margin: 0 auto 20px auto;
+  list-style: none;
+}
+
+.portfolio .portfolio-filters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 10px;
+  line-height: 1;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio .portfolio-filters li:hover,
+.portfolio .portfolio-filters li.filter-active {
+  border-bottom: 2px solid var(--default-color);
+  padding-bottom: 3px;
+}
+
+.portfolio .portfolio-filters li:first-child {
+  margin-left: 0;
+}
+
+.portfolio .portfolio-filters li:last-child {
+  margin-right: 5px;
+}
+
+@media (max-width: 575px) {
+  .portfolio .portfolio-filters li {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+}
+
+.portfolio .portfolio-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio .portfolio-content img {
+  transition: 0.3s;
+}
+
+.portfolio .portfolio-content .portfolio-info {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  transition: all ease-in-out 0.3s;
+  background: rgba(255, 255, 255, 0.912);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center; 
+}
+
+.portfolio .portfolio-content .portfolio-info h4 {
+  font-size: 18px;
+  mask-border: 0;
+  font-weight: 400;
+  color: #000000;
+  display: inline-block;
+}
+
+.portfolio .portfolio-content .portfolio-info p {
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(63, 88, 171, 0);
+}
+
+.portfolio .portfolio-content .portfolio-info .preview-link,
+.portfolio .portfolio-content .portfolio-info .details-link {
+  font-size: 26px;
+  color: #fff;
+  transition: 0.3s;
+  line-height: 1.2;
+}
+
+.portfolio .portfolio-content .portfolio-info .preview-link:hover,
+.portfolio .portfolio-content .portfolio-info .details-link:hover {
+  color: var(--accent-color);
+}
+
+.portfolio .portfolio-content .portfolio-info .details-link {
+  left: 50%;
+  font-size: 34px;
+  line-height: 0;
+}
+
+.portfolio .portfolio-content:hover .portfolio-info {
+  opacity: 1;
+}
+
+.portfolio .portfolio-content:hover img {
+  transform: scale(1.1);
+}
+
+.card-title {
+      padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    color: #000000;
+    background-color: #9bb6f5;
+    font-size: 10pt;
+    font-weight: 600;
+}
+
+
+/*--------------------------------------------------------------
+# Clients Section
+--------------------------------------------------------------*/
+.clients .swiper-slide img {
+  opacity: 0.5;
+  transition: 0.3s;
+  filter: grayscale(100);
+}
+
+.clients .swiper-slide img:hover {
+  filter: none;
+  opacity: 1;
+}
+
+.clients .swiper-wrapper {
+  height: auto;
+}
+
+.clients .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.clients .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background-color: color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.clients .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Services Section
+--------------------------------------------------------------*/
+.services .service-item {
+  background-color: var(--surface-color);
+  padding: 40px;
+  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.services .service-item .icon {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.services .service-item .icon i {
+  color: color-mix(in srgb, var(--heading-color), transparent 30%);
+  font-size: 56px;
+  transition: ease-in-out 0.3s;
+  z-index: 2;
+  position: relative;
+}
+
+.services .service-item .icon:before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  background: color-mix(in srgb, var(--heading-color), transparent 95%);
+  border-radius: 50px;
+  z-index: 1;
+  top: 10px;
+  right: -20px;
+  transition: 0.3s;
+}
+
+.services .service-item h3 {
+  color: color-mix(in srgb, var(--heading-color), transparent 20%);
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  padding-bottom: 8px;
+  font-size: 22px;
+  position: relative;
+  display: inline-block;
+  border-bottom: 4px solid color-mix(in srgb, var(--heading-color), transparent 90%);
+  transition: 0.3s;
+}
+
+.services .service-item p {
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.services .service-item .readmore {
+  margin-top: 15px;
+  display: inline-block;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+}
+
+.services .service-item:hover .icon i {
+  color: var(--heading-color);
+}
+
+.services .service-item:hover .icon:before {
+  background: color-mix(in srgb, var(--heading-color), transparent 90%);
+}
+
+.services .service-item:hover h3 {
+  border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+  color: var(--heading-color);
+}
+
+.services .service-item:hover .readmore {
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Testimonials Section
+--------------------------------------------------------------*/
+.testimonials .section-header {
+  margin-bottom: 40px;
+}
+
+.testimonials .testimonials-carousel,
+.testimonials .testimonials-slider {
+  overflow: hidden;
+}
+
+.testimonials .testimonial-item {
+  text-align: center;
+}
+
+.testimonials .testimonial-item .testimonial-img {
+  width: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--background-color);
+  margin: 0 auto;
+}
+
+.testimonials .testimonial-item h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+}
+
+.testimonials .testimonial-item h4 {
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin: 0 0 15px 0;
+}
+
+.testimonials .testimonial-item .stars {
+  margin-bottom: 15px;
+}
+
+.testimonials .testimonial-item .stars i {
+  color: #ffc107;
+  margin: 0 1px;
+}
+
+.testimonials .testimonial-item .quote-icon-left,
+.testimonials .testimonial-item .quote-icon-right {
+  color: color-mix(in srgb, var(--accent-color), transparent 50%);
+  font-size: 26px;
+  line-height: 0;
+}
+
+.testimonials .testimonial-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+
+.testimonials .testimonial-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+  transform: scale(-1, -1);
+}
+
+.testimonials .testimonial-item p {
+  font-style: italic;
+  margin: 0 auto 15px auto;
+}
+
+.testimonials .swiper-wrapper {
+  height: auto;
+}
+
+.testimonials .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+@media (min-width: 992px) {
+  .testimonials .testimonial-item p {
+    width: 80%;
+  }
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about .content h2 {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about .content ul li {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.about .content ul strong {
+  margin-right: 10px;
+}
+
+.about .content ul i {
+  font-size: 16px;
+  margin-right: 5px;
+  color: var(--accent-color);
+  line-height: 0;
+}
+
+/*--------------------------------------------------------------
+# Resume Section
+--------------------------------------------------------------*/
+.resume .resume-title {
+  color: var(--heading-color);
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.resume .resume-item {
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+  border-left: 2px solid var(--accent-color);
+  position: relative;
+}
+
+.resume .resume-item h4 {
+  line-height: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  margin-bottom: 10px;
+}
+
+.resume .resume-item h5 {
+  font-size: 16px;
+  padding: 5px 15px;
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.resume .resume-item ul {
+  padding-left: 20px;
+}
+
+.resume .resume-item ul li {
+  padding-bottom: 10px;
+}
+
+.resume .resume-item:last-child {
+  padding-bottom: 0;
+}
+
+.resume .resume-item::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50px;
+  left: -9px;
+  top: 0;
+  background: var(--background-color);
+  border: 2px solid var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Pricing Section
+--------------------------------------------------------------*/
+.pricing .pricing-item {
+  background-color: var(--surface-color);
+  padding: 60px 40px;
+  box-shadow: 0 3px 20px -2px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  position: relative;
+}
+
+.pricing h3 {
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.pricing h4 {
+  font-size: 48px;
+  color: var(--accent-color);
+  font-family: var(--heading-font);
+  font-weight: 400;
+}
+
+.pricing h4 sup {
+  font-size: 28px;
+}
+
+.pricing h4 span {
+  color: color-mix(in srgb, var(--default-color), transparent 60%);
+  font-size: 18px;
+}
+
+.pricing ul {
+  padding: 20px 0;
+  list-style: none;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  text-align: left;
+  line-height: 20px;
+}
+
+.pricing ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.pricing ul i {
+  color: #059652;
+  font-size: 24px;
+  padding-right: 3px;
+}
+
+.pricing ul .na {
+  color: color-mix(in srgb, var(--default-color), transparent 60%);
+}
+
+.pricing ul .na i {
+  color: color-mix(in srgb, var(--default-color), transparent 60%);
+}
+
+.pricing ul .na span {
+  text-decoration: line-through;
+}
+
+.pricing .buy-btn {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  background-color: var(--background-color);
+  display: inline-block;
+  padding: 8px 35px 10px 35px;
+  border-radius: 4px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 60%);
+  transition: none;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--heading-font);
+  transition: 0.3s;
+}
+
+.pricing .buy-btn:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.pricing .featured {
+  z-index: 10;
+}
+
+.pricing .featured .pricing-item {
+  background: var(--accent-color);
+}
+
+@media (min-width: 992px) {
+  .pricing .featured .pricing-item {
+    transform: scale(1.02, 1.1);
+  }
+}
+
+.pricing .featured h3,
+.pricing .featured h4,
+.pricing .featured h4 span,
+.pricing .featured ul,
+.pricing .featured ul .na,
+.pricing .featured ul i,
+.pricing .featured ul .na i {
+  color: var(--contrast-color);
+}
+
+.pricing .featured .buy-btn {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border-color: var(--contrast-color);
+}
+
+.pricing .featured .buy-btn:hover {
+  background: color-mix(in srgb, var(--background-color), transparent 92%);
+}
+
+/*--------------------------------------------------------------
+# Alt Pricing Section
+--------------------------------------------------------------*/
+.alt-pricing .pricing-item {
+  border-bottom: 1px dashed color-mix(in srgb, var(--default-color), transparent 60%);
+  width: 100%;
+  height: 100%;
+  padding: 0 0 15px 0;
+}
+
+.alt-pricing .pricing-item h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.alt-pricing .pricing-item h4 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Portfolio Details Section
+--------------------------------------------------------------*/
+.portfolio-details .portfolio-details-slider img {
+     padding-left: 50px; /* Padding sinistro per il carosello */
+    padding-right: 50px; /* Padding destro per il carosello */
+    /* Regola questi valori a tuo piacimento */
+}
+
+/* MEDIA QUERY per ridurre il padding del carosello su schermi più piccoli */
+@media (max-width: 768px) {
+    .portfolio-details-slider {
+        padding-left: 30px; /* Esempio di padding ridotto su mobile */
+        padding-right: 30px;
+    }
+}
+
+/* --- REGOLE PER IL RAPPORTO 16:9 --- */
+/* Contenitore per mantenere il rapporto 16:9 */
+.swiper-slide-ratio-16-9 {
+    
+    width: 100%;
+    padding-top: 50%; /* Questo è il 9 / 16 * 100% = 56.25% per il rapporto 16:9 */
+    position: relative;
+    overflow: hidden; /* Nasconde ciò che sfora se l'immagine è più grande o con proporzioni diverse */
+}
+
+/* Immagine all'interno del contenitore 16:9 */
+.swiper-slide-ratio-16-9 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Riempie il contenitore mantenendo le proporzioni e tagliando se necessario */
+    object-position: block; /* Centra l'immagine all'interno del suo spazio */
+}
+
+/* --- FINE REGOLE RAPPORTO 16:9 --- */
+
+
+/* Stili per le frecce di navigazione di Swiper */
+.swiper-button-prev,
+.swiper-button-next {
+    color: var(--accent-color,#94a2f3); /* Colore delle frecce */
+    background-color: rgba(255, 255, 255, 0.7); /* Sfondo semi-trasparente */
+    width: 40px; /* Larghezza del pulsante */
+    height: 40px; /* Altezza del pulsante */
+    border-radius: 50%; /* Rendi il pulsante rotondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 1px 3px rgba(81, 81, 81, 0.2); /* Ombra leggera */
+    
+    /* Posizionamento verticale delle frecce */
+    top: 50%;
+    transform: translateY(-50%);
+    
+    /* Se vuoi che le frecce siano più all'interno rispetto al padding del carosello,
+       puoi aggiungere qui 'left' e 'right' specifici: */
+    /* left: 110px; */ /* es. 100px di padding + 10px in più */
+    /* right: 110px; */
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background-color: var(--accent-color, #000000); /* Cambia colore al passaggio del mouse */
+    color: var(--contrast-color, #ffffff); /* Testo/icona bianca al passaggio del mouse */
+}
+
+/* Regole per le icone all'interno delle frecce (gestite da Swiper.js) */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 20px; /* Dimensione dell'icona della freccia */
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
+  opacity: 1;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+.portfolio-details .portfolio-info {
+  background-color: var(--surface-color);
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-details .portfolio-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.portfolio-details .portfolio-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.portfolio-details .portfolio-info ul li+li {
+  margin-top: 10px;
+}
+
+.portfolio-details .portfolio-description {
+  padding-top: 30px;
+}
+
+.portfolio-details .portfolio-description h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.portfolio-details .portfolio-description p {
+  padding: 0;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+}
+
+
+/*--------------------------------------------------------------
+# Service Details Section
+--------------------------------------------------------------*/
+.service-details .services-list {
+  background-color: var(--surface-color);
+  padding: 10px 30px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  margin-bottom: 20px;
+}
+
+.service-details .services-list a {
+  display: block;
+  line-height: 1;
+  padding: 8px 0 8px 15px;
+  border-left: 3px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  margin: 20px 0;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  transition: 0.3s;
+}
+
+.service-details .services-list a.active {
+  color: var(--heading-color);
+  font-weight: 700;
+  border-color: var(--accent-color);
+}
+
+.service-details .services-list a:hover {
+  border-color: var(--accent-color);
+}
+
+.service-details .services-img {
+  margin-bottom: 20px;
+}
+
+.service-details h3 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.service-details h4 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.service-details p {
+  font-size: 15px;
+}
+
+.service-details ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.service-details ul li {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.service-details ul i {
+  font-size: 20px;
+  margin-right: 8px;
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Starter Section Section
+--------------------------------------------------------------*/
+.starter-section {
+  /* Add your styles here */
+}
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+.contact {
+  background-image: url("../img/contact-bg.png");
+  background-position: left center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .contact {
+    background-position: center 50px;
+    background-size: contain;
+  }
+}
+
+.contact:before {
+  content: "";
+  background: color-mix(in srgb, var(--background-color), transparent 30%);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.contact .info-item+.info-item {
+  margin-top: 40px;
+}
+
+.contact .info-item i {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 15px;
+}
+
+.contact .info-item h3 {
+  padding: 0;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.contact .info-item p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.contact .php-email-form {
+  height: 100%;
+}
+
+.contact .php-email-form input[type=text],
+.contact .php-email-form input[type=email],
+.contact .php-email-form textarea {
+  font-size: 14px;
+  padding: 10px 15px;
+  box-shadow: none;
+  border-radius: 0;
+  color: var(--default-color);
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.contact .php-email-form input[type=text]:focus,
+.contact .php-email-form input[type=email]:focus,
+.contact .php-email-form textarea:focus {
+  border-color: var(--accent-color);
+}
+
+.contact .php-email-form input[type=text]::placeholder,
+.contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form textarea::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.contact .php-email-form button[type=submit] {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  border: 0;
+  padding: 10px 30px;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.contact .php-email-form button[type=submit]:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+
+<!-- overview --> 
+/* --- Sezione Project Overview --- */
+.project-overview {
+  padding: 80px 0; /* Spazio verticale per la sezione */
+  background-color: var(--background-color); /* Colore di sfondo ereditato */
+}
+
+.project-overview .container {
+  /* Questo stile .container è già definito nel tuo CSS generale,
+     assicurati che sia consistente per centrare il contenuto */
+  max-width: 1000px;
+  margin-left: 50px;
+  margin-right: auto;
+  padding-left: 100px;
+  padding-right: 30px;
+}
+
+.project-overview .row {
+  display: flex;
+  flex-wrap: wrap; /* Assicura che le colonne vadano a capo su schermi piccoli */
+}
+
+/* Base per le colonne - se non usi Bootstrap, queste sono importanti */
+.project-overview .col-lg-7,
+.project-overview .col-lg-5 {
+  width: 100%; /* Default mobile: 100% width */
+  margin-bottom: 30px; /* Spazio tra le colonne su mobile */
+}
+
+@media (min-width: 992px) { /* Breakpoint per desktop, dove le colonne affiancate */
+  .project-overview .col-lg-7 {
+    flex: 0 0 auto;
+    width: 58.33333333%; /* ~7/12 della larghezza */
+    padding-right: 30px; /* Spazio tra le due colonne su desktop */
+  }
+
+  .project-overview .col-lg-5 {
+    flex: 0 0 auto;
+    width: 41.66666667%; /* ~5/12 della larghezza */
+    padding-left: 30px; /* Spazio tra le due colonne su desktop */
+  }
+}
+
+/* Stili per la colonna di sinistra (Overview) */
+.project-overview .overview-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #888888; /* Grigio chiaro come nell'immagine */
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eeeeee; /* Linea sottile sotto il titolo "OVERVIEW" */
+}
+
+.project-overview .overview-text {
+  font-size: 18px; /* Dimensione del testo per la descrizione */
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: var(--default-color); /* Colore del testo ereditato */
+}
+
+/* Stile specifico per i link @PoliMI, @D-Heart */
+.project-overview .overview-text .project-link {
+  color: var(--accent-color); /* Utilizza il colore accentato per i link */
+  font-weight: 500; /* Leggermente più grassetto per farli risaltare */
+  text-decoration: none;
+}
+
+.project-overview .overview-text .project-link:hover {
+  text-decoration: underline; /* Sottolinea al passaggio del mouse */
+}
+
+/* Stili per i bottoni "Try the app" e "Project report" */
+/* --- Sezione Titolo Principale e Sottotitolo (Intro) --- */
+.project-intro {
+  padding: 400px 0 80px 0 !important; 
+  background-color: var(--light-background-color, #f8f9fa);
+}
+
+.project-intro h1 {
+  font-family: var(--default-font);
+  font-size: 60px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+}
+
+.project-intro .lead {
+  font-family: var(--default-font);
+  font-size: 22px;
+  color: var(--default-color);
+  margin-bottom: 0;
+}
+
+/* --- Sezione Immagine a Tutta Pagina --- */
+.project-main-image {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.project-main-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Sezione Overview e Dettagli Progetto (affiancati) --- */
+.project-content {
+  padding: 80px 0;
+  background-color: var(--background-color);
+}
+
+.project-content .overview-text-wrapper {
+    max-width: 550px; /* Imposta una larghezza massima per "comprimere" il testo. Regola questo valore! */
+    margin: 0 auto;
+    /* Puoi usare anche percentuali, es. max-width: 90%; */
+    /* E un margine automatico per centrarlo se vuoi, ma di default sarà a sinistra */
+    /* margin-left: 0; */
+    /* margin-right: auto; */
+}
+
+/* Stili specifici per i link @PoliMI, @D-Heart */
+/* Ho corretto la classe del contenitore del testo: da .overview-text a .overview-text-wrapper */
+.project-content .overview-text-wrapper .project-link {
+  color: var(--accent-color); /* Un colore celeste specifico, puoi scegliere la tonalità che preferisci */
+  font-weight: 500; /* Mantenuto il tuo font-weight */
+  text-decoration: none; /* Rimuove la sottolineatura predefinita dei link */
+  transition: color 0.3s ease; /* Aggiunge una transizione fluida */
+}
+
+.project-content .overview-text-wrapper .project-link:hover {
+  color: #9bb6f5; /* Un celeste leggermente più scuro al passaggio del mouse */
+  text-decoration: underline; /* Aggiunge la sottolineatura al hover */
+}
+
+
+/* NUOVA REGOLA: Stile per il wrapper dei dettagli (colonna destra) */
+.project-content .details-wrapper {
+    max-width: 550px; /* Imposta una larghezza massima per i dettagli. Regola questo valore! */
+    margin: 0 auto; /* Centra il blocco orizzontalmente */
+    /* padding-left: 20px; /* Opzionale: se vuoi un padding interno */
+    /* padding-right: 20px; /* Opzionale: se vuoi un padding interno */
+}
+
+/* Stile per il titolo "OVERVIEW" */
+.project-content .overview-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #b4b4b4; /* Grigio chiaro */
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* Stile per il testo della descrizione (Overview) */
+.project-content .overview-text {
+  font-family: var(--default-font);
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px; /* Spazio sotto ogni paragrafo dell'overview */
+  color: var(--default-color);
+}
+
+/* Rimuovi la regola '.project-content .overview-text:last-of-type' se vuoi uno spazio uniforme */
+/* Se la vuoi per l'ultimo paragrafo prima del bottone, usala così (ma 'margin-top' sul bottone è meglio): */
+/* .project-content p.overview-text:last-of-type {
+    margin-bottom: 5px; // Piccolo spazio prima del bottone
+} */
+
+
+/* Stili per il contenitore dei bottoni (ora all'interno di .project-content) */
+.project-content .overview-buttons {
+  display: flex; /* Mantiene i bottoni allineati orizzontalmente se ce ne fossero più di uno */
+  gap: 15px; /* Spazio tra i bottoni */
+  justify-content: flex-start; /* Allinea gli elementi flex (i bottoni) a sinistra */
+  /* Questo è il margine per staccare il bottone dal testo sopra */
+  margin-top: 30px; /* Spazio di 5px sopra il div del bottone */
+  /* Non usare padding-top se vuoi un margin-top esatto e viceversa */
+  /* Assicurati che non ci sia !important qui */
+  margin-bottom: 30px;
+}
+
+/* --- NUOVE REGOLE PER "KEY FINDINGS" --- */
+/* Target specifico per il blocco "KEY FINDINGS" */
+.project-content .col-12 .detail-item {
+  /* Assicura che il contenuto del detail-item si centri */
+  margin-left: auto;
+  margin-right: auto;
+  /* Per allinearlo con gli altri testi, usiamo un max-width simile a .overview-text-wrapper */
+  max-width: 1200px; /* Imposta la stessa larghezza massima degli altri blocchi di testo */
+  text-align: left; /* Centra il testo all'interno di questo blocco */
+  padding-left: 15px; /* Aggiungi padding per evitare che il testo si incolli ai bordi su mobile */
+  padding-right: 15px; /* Aggiungi padding per evitare che il testo si incolli ai bordi su mobile */
+  box-sizing: border-box; /* Cruciale per includere padding nella larghezza */
+  margin-bottom: 5px; /* Spazio sotto il blocco di testo, se necessario */
+}
+
+.project-content + .portfolio-details.section {
+  padding-top: 0; /* Rimuovi il padding superiore della sezione del carosello */
+  margin-top: -60px; /* Sposta il carosello più in alto, verso il testo "KEY FINDINGS" */
+  /* Puoi regolare questo valore (-40px) per avvicinare o allontanare a tuo piacimento */
+}
+
+/* Stili specifici per i link @PoliMI, @D-Heart */
+.project-content .overview-text .project-link { /* Ho cambiato da .project-overview a .project-content */
+  color: var(--accent-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.project-content .overview-text .project-link:hover {
+  text-decoration: underline;
+}
+
+/* Stili per il bottone "Project report" */
+.project-content .project-button { /* Ho cambiato da .project-overview a .project-content */
+  cursor: pointer;
+  font-weight: 400;
+  transition: all 0.2s;
+  padding: 8px 18px;
+  border-radius: 20px;
+  background: #edecec;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-family: var(--button-font);
+  color: var(--default-color);
+  text-decoration: none; 
+}
+
+.project-content .project-button:hover { /* Ho cambiato da .project-overview a .project-content */
+  background:  #9bb6f5;
+  color: var(--contrast-color);
+}
+
+.project-content .project-button > svg { /* Ho cambiato da .project-overview a .project-content */
+  width: 18px;
+  height: 18px;
+  margin-left: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-content .project-button:hover svg { /* Ho cambiato da .project-overview a .project-content */
+  transform: translateX(3px);
+  color: var(--contrast-color);
+}
+
+/* Stili per la colonna di destra (Project Details) */
+.detail-item {
+  margin-bottom: 30px; /* Aumenta lo spazio tra ogni blocco di dettaglio */
+  position: relative; /* Necessario per il posizionamento della linea */
+  padding-bottom: 20px; /* Spazio per la linea e per staccare dal bordo inferiore dell'item */
+}
+
+/* Rimuovi il margine dall'ultimo elemento per non avere una linea in più alla fine */
+.detail-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0; /* Rimuovi anche il padding all'ultimo */
+}
+
+/* Stile per i titoli "Goal", "My Role", "Team", "Timeline" */
+.detail-item .detail-label {
+  font-size: 14px;
+  font-weight: 700; /* Mantieni grassetto */
+  color: #b4b4b4; /* Grigio chiaro */
+  text-transform: uppercase;
+  margin-bottom: 2px; /* Spazio tra il titolo e la descrizione */
+  display: block; /* Assicura che sia un blocco per avere il margine inferiore */
+}
+
+/* Stile per il testo sotto i Goal, My Role, ecc. */
+.detail-item .detail-text {
+  font-size: 16px;
+  line-height: 1.5;F
+  color: var(--default-color);
+  margin-bottom: 0; /* Assicurati che non ci sia margine in basso */
+}
+
+/* AGGIUNGI QUESTA NUOVA REGOLA per la linea separatrice */
+.detail-item::after {
+  content: ''; /* Contenuto vuoto per creare l'elemento pseudo */
+  position: absolute;
+  bottom: 0; /* Posiziona la linea in fondo all'elemento */
+  left: 0;
+  width: 500px; /* Lunghezza della linea (puoi regolarla) */
+  height: 1px; /* Spessore della linea */
+  background-color: #dddddd; /* Colore della linea (grigio chiaro) */
+}
+
+/* Rimuovi la linea dall'ultimo elemento, se non la vuoi */
+.detail-item:last-child::after {
+  display: none;
+}
+
+
+/* Media Query per Mobile (adatta i titoli) */
+@media (max-width: 768px) {
+  .project-intro h1 {
+    font-size: 50px;
+
+  }
+  .project-intro .lead {
+    font-size: 18px;
+  }
+  .project-content .overview-text {
+    font-size: 16px;
+  }
+}
+
+.project-media img {
+  border-radius: 15px; /* Applica un raggio di 8px agli angoli */
+  /* Puoi aumentare o diminuire questo valore per angoli più o meno smussati */
+  /* Esempio: border-radius: 15px; per angoli più arrotondati */
+  /* Esempio: border-radius: 50%; per un'immagine circolare (se è quadrata) */
+}
+
+/* Se vuoi assicurarti che l'immagine non sborderi dal contenitore */
+.project-media {
+  overflow: hidden; /* Nasconde qualsiasi parte dell'immagine che esce dai bordi arrotondati */
+}
+
+/* Stili per il contenitore delle immagini multiple */
+.project-media-gallery {
+  display: flex; /* Abilita Flexbox */
+  flex-wrap: wrap; /* Permette alle immagini di andare a capo su schermi più piccoli */
+  gap: 15px; /* Spazio tra le immagini */
+  justify-content: center; /* Centra le immagini orizzontalmente */
+  align-items: flex-start; /* Allinea le immagini in alto */
+  height: 100%; /* Fa sì che il contenitore occupi l'altezza disponibile */
+}
+
+/* Stili per le singole immagini nella galleria */
+.gallery-img {
+  width: calc(33.33% - 10px); /* Calcola la larghezza per 3 immagini con gap */
+  /* (3 immagini * 15px di gap) / 3 immagini = 10px per lato per immagine */
+  height: auto; /* Mantiene il rapporto d'aspetto */
+  object-fit: cover; /* Assicura che le immagini coprano l'area senza distorsioni */
+  border-radius: 8px; /* Angoli arrotondati, opzionale */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombra leggera, opzionale */
+}
+
+/* Media Query per schermi più piccoli (es. tablet o mobile) */
+@media (max-width: 991px) { /* breakpoint di Bootstrap per col-lg */
+  .gallery-img {
+    width: calc(50% - 10px); /* 2 immagini per riga su schermi medi */
+  }
+}
+
+@media (max-width: 575px) { /* breakpoint di Bootstrap per col-sm (circa) */
+  .gallery-img {
+    width: 100%; /* 1 immagine per riga su schermi molto piccoli */
+  }
+}
+
+/* Potresti voler rimuovere o modificare lo stile .project-media se non lo usi altrove */
+/* .project-media {
+  // rimuovere o modificare se non necessario
+} */
+ 
+/* Stile per la sezione contenitore */
+/* --- Sezione Video Player con Padding Laterali --- */
+/* --- Sezione Video Player con Padding Laterali --- */
+/* --- Sezione Video Player con Padding Laterali --- */
+.video-player-section {
+  padding: 80px 0;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}
+
+.video-player-container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Rapporto d'aspetto 16:9 */
+  background-color: #000;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  /* Rimosso margin-bottom qui, perché la barra non è più sotto, ma dentro */
+}
+
+.video-element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Stili per i controlli (pulsante play/pause E barra di avanzamento) */
+.video-controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* Per impilare il bottone play e la barra */
+  justify-content: space-between; /* Spinge play in alto/centro e barra in basso */
+  align-items: center; /* Centra orizzontalmente i controlli */
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  opacity: 1;
+  padding: 15px; /* Aggiungi un po' di padding per i controlli */
+  box-sizing: border-box; /* Per includere il padding nella dimensione */
+}
+
+.video-element.playing + .video-controls {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.play-pause-button {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  color: var(--accent-color);
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  margin-top: auto; /* Spinge il pulsante play/pause verso il centro/alto */
+  margin-bottom: auto; /* Spinge il pulsante play/pause verso il centro/basso */
+  /* Queste due proprietà centreranno il pulsante play/pause verticalmente */
+}
+
+.play-pause-button:hover {
+  transform: scale(1.05);
+  background-color: #fff;
+}
+
+/* REGOLA CANCELLATA: Non abbiamo più bisogno di .control-button per il bottone stop */
+/* .control-button { ... } */
+
+
+/* Nuovo contenitore per la barra di progressione, posizionato in basso */
+.video-bottom-overlay-controls {
+    width: 100%;
+    /* Rimuoviamo position:absolute e bottom:0 qui per lasciare che Flexbox gestisca il posizionamento */
+    /* La barra sarà spinta in basso dal justify-content: space-between del genitore (.video-controls) */
+}
+
+
+/* Stili per la barra di avanzamento e i tempi */
+.progress-bar-container {
+    width: 100%; /* Occupa quasi tutta la larghezza del video-bottom-overlay-controls */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px 0;
+    border-radius: 5px;
+    margin-top: auto; /* Questo e margin-bottom: 0; aiutano a posizionare la barra in basso quando justify-content: space-between non è usato */
+    margin-bottom: 0;
+}
+
+#progressBar {
+  width: 95%; /* La barra occupa la maggior parte della larghezza del suo contenitore */
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  background: transparent; /* Il background del track viene definito dopo */
+  outline: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+/* Stile per il TRACK */
+#progressBar::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+#progressBar::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Stile per il 'thumb' */
+#progressBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  cursor: pointer;
+  margin-top: -4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#progressBar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(31, 24, 10, 0.3);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Opzionale: stile al hover per il thumb */
+#progressBar::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+#progressBar::-moz-range-thumb:hover {
+    transform: scale(1.1);
+}
+
+.time-display {
+  color: #fff;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+/* Stili per il testo sovrapposto (opzionale) */
+.video-overlay-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  z-index: 11;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Nasconde il testo quando il video è in riproduzione */
+.video-element.playing + .video-controls + .video-overlay-text {
+    opacity: 0;
+}
+
+/* Regole per l'icona Play/Pause */
+.play-pause-button .bi-play-fill {
+  display: block;
+}
+
+.play-pause-button .bi-pause-fill {
+  display: none;
+}
+
+.video-element.playing + .video-controls .bi-play-fill {
+  display: none;
+}
+
+.video-element.playing + .video-controls .bi-pause-fill {
+  display: block;
+}
+
+/* Media Query per schermi più piccoli */
+@media (max-width: 768px) {
+  .play-pause-button {
+    width: 60px;
+    height: 60px;
+    font-size: 2em;
+  }
+  /* Rimosso .control-button dal media query */
+  #progressBar {
+      height: 6px;
+  }
+  #progressBar::-webkit-slider-runnable-track,
+  #progressBar::-moz-range-track {
+      height: 6px;
+  }
+  #progressBar::-webkit-slider-thumb, #progressBar::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      margin-top: -4px;
+  }
+  .time-display {
+      font-size: 0.8em;
+  }
+  /* Modifiche per i controlli in basso nell'overlay per mobile */
+  .video-bottom-overlay-controls {
+      padding: 5px 10px; /* Riduci padding per mobile */
+  }
+  .progress-bar-container {
+      width: 100%; /* Occupa tutta la larghezza per mobile */
+      margin-bottom: 0;
+  }
+
+/* --- */
+/* Next/Previous Project Sections - Navigazione Progetti */
+/* --- */
+
+/* Next Project Section - Freccia a Destra del Testo e Tutto a Destra */
+/* --- */
+
+.next-project-right-aligned {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+/* Allinea il contenuto della riga di Bootstrap a destra */
+.next-project-right-aligned .container .row {
+  justify-content: flex-end; /* Spinge la col-12 a destra */
+}
+
+/* Stili del link principale (il blocco navigabile) */
+.next-project-link {
+  display: flex;
+  flex-direction: column; /* Impila gli elementi verticalmente (freccia sopra il testo) */
+  align-items: flex-end; /* Allinea la freccia e il testo a destra all'interno di questo contenitore */
+
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease-in-out;
+  padding: 15px 0;
+  max-width: 600px; /* Larghezza massima del blocco navigazione */
+  width: 100%; /* Assicura che occupi tutta la larghezza disponibile fino al max-width */
+  margin-left: auto; /* Spinge l'intero blocco del link all'estrema destra all'interno del suo col-12 */
+  justify-content: center; /* Centra l'intero blocco verticalmente se c'è spazio */
+}
+
+/* Effetto al passaggio del mouse sul link */
+.next-project-link:hover {
+  transform: translateX(-10px); /* Sposta leggermente a sinistra */
+}
+
+/* Stili della freccia */
+.next-project-arrow {
+  font-size: 4rem; /* Dimensione grande della freccia */
+  color: var(--accent-color, #007bff);
+  transition: all 0.3s ease-in-out;
+  flex-shrink: 0;
+  margin-bottom: 10px; /* Spazio sotto la freccia e sopra il testo */
+  /* --- RIMOSSO: margin-left: 1200px; --- */
+  /* L'allineamento a destra è ora gestito da align-items: flex-end sul genitore (.next-project-link) */
+}
+
+/* Effetto al passaggio del mouse sulla freccia */
+.next-project-link:hover .next-project-arrow {
+  color: #333;
+}
+
+/* Stili del contenitore del testo */
+.next-project-text-content {
+  flex-grow: 1;
+  width: 100%; /* Cruciale: Assicura che il contenitore di testo occupi la larghezza completa disponibile */
+  /* L'allineamento del testo a destra è gestito dalla classe Bootstrap text-end nell'HTML */
+}
+
+/* Stili del sottotitolo */
+.next-project-subtitle {
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Stili del titolo */
+.next-project-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+/* Stili della descrizione */
+.next-project-description {
+  font-size: 1.1em;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* --- Media Queries per la Responsività (Solo per aggiustamenti minori) --- */
+/* Manteniamo le media queries solo per aggiustamenti come padding o dimensioni del testo/freccia,
+   senza alterare l'allineamento principale. */
+@media (max-width: 768px) {
+  .next-project-right-aligned {
+    padding: 60px 0; /* Riduci il padding su schermi più piccoli */
+   background-color: #ffffff;}
+
+  .next-project-link {
+    max-width: 90%; /* Occupa più larghezza su mobile */
+    margin: 0 auto; /* Centra l'intero blocco su mobile */
+    /* Nessuna modifica a flex-direction o align-items qui, rimangono come per desktop */
+  }
+
+  .next-project-arrow {
+    font-size: 3rem; /* Riduci dimensione freccia su mobile */
+    margin-bottom: 8px; /* Aggiusta il margine sotto la freccia su mobile */
+    /* --- RIMOSSO: margin-left: 420px; --- */
+    /* Non c'è bisogno di un margin-left fisso, align-items: flex-end lo gestisce */
+  }
+
+  .next-project-title {
+    font-size: 1.8rem;
+  }
+
+  .next-project-description {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 576px) {
+  .next-project-right-aligned {
+    padding: 40px 0;
+  }
+  .next-project-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* --- */
+/* Project Separator */
+/* --- */
+.project-separator {
+  border: 0; /* Rimuovi il bordo predefinito */
+  height: 2px; /* Imposta l'altezza della linea */
+  background-color: #565656; /* Colore grigio chiaro per la linea */
+  margin: 60px auto; /* Spazio sopra e sotto, centratura orizzontale */
+  margin-bottom: 60px;
+  width: 80%; /* Larghezza della linea, puoi modificarla */
+  max-width: 80%; /* Larghezza massima per schermi molto grandi */
+}
+
+/* Stili per l'immagine del profilo nella sezione About */
+.immagine-profilo-about {
+  border-radius: 15px !important; /* Bordi arrotondati di 15px */
+  max-width: 100%; /* Si adatta alla colonna */
+  height: auto; /* Mantiene le proporzioni */
+  /* Puoi aggiungere una larghezza fissa se preferisci, ad esempio: */
+  /* width: 250px; */ /* Aggiusta la larghezza se necessario */
+  /* height: 250px; */ /* Rendi quadrata se vuoi un cerchio con border-radius: 50%; */
+  
+  /* Centra l'immagine all'interno della sua colonna */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Regole per la responsività dell'immagine se necessario */
+@media (max-width: 768px) {
+  .immagine-profilo-about {
+    /* Potresti voler ridurre la larghezza su schermi piccoli */
+    /* width: 180px; */ 
+    /* height: 180px; */
+  }
+}
+
+.personal-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 2 colonne che si adattano */
+  gap: 15px; /* Spazio tra gli elementi della griglia */
+  margin-top: 20px; /* Spazio sopra la griglia */
+  margin-bottom: 20px; /* Spazio sotto la griglia */
+}
+
+.personal-info-grid div {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee; /* Linea leggera sotto ogni dato */
+  display: flex; /* Rende ogni riga flex per allineare chiave e valore */
+  justify-content: space-between; /* Spinge chiave a sinistra e valore a destra */
+  align-items: center; /* Centra verticalmente */
+}
+
+/* Rimuove la linea sotto l'ultimo elemento per un aspetto più pulito */
+.personal-info-grid div:last-child {
+  border-bottom: none;
+}
+
+/* Media query per la responsività */
+@media (max-width: 768px) {
+  .personal-info-grid {
+    grid-template-columns: 1fr; /* Una sola colonna su schermi più piccoli */
+    text-align: left; /* Allinea il testo a sinistra su mobile */
+  }
+}
+
+}
